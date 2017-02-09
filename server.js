@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 app.get('/:date', (req, res) => {
     'use strict';
     
-    const timestampRegex = /[0-9]{13}|[0-9]{10}/;
+    const timestampRegex = /[0-9]*/;
     const options        = { year: 'numeric', month: 'long', day: 'numeric' };
     const param          = req.params.date;
     
@@ -20,7 +20,7 @@ app.get('/:date', (req, res) => {
     if (timestampRegex.test(parseInt(param))) {
         let ts = parseInt(param);
         
-        date    = new Date(ts.length === 10 ? ts * 1000 : ts);
+        date    = new Date(param.length === 10 ? ts * 1000 : ts);
         unix    = ts;
         natural = date.toLocaleDateString('en-US', options);
     } else if (param === (new Date(param)).toLocaleDateString('en-US', options)) {
