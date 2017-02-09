@@ -3,7 +3,7 @@ const app = express();
 
 // index page
 app.get('/', (req, res) => {
-    res.send('Hello World');
+    res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/:date', (req, res) => {
