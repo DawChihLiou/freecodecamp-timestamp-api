@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 8080;
 
 // index page
 app.get('/', (req, res) => {
@@ -32,6 +33,6 @@ app.get('/:date', (req, res) => {
     res.send({ unix, natural });
 });
 
-app.listen(8080, () => {
-    console.log('Example app is listening to port 8080');
+app.listen(port, () => {
+    console.log('Example app is listening to port '+ port);
 });
